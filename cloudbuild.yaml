@@ -20,6 +20,8 @@ steps:
   - builder_sa=$_PACKER_SA
   - -var
   - image_name=$_IMAGE_NAME
+  - -var
+  - use_internal_ip=true
   - build.pkr.hcl
 tags: ['cloud-builders-community']
 substitutions:

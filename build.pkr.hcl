@@ -23,6 +23,11 @@ variable "image_name" {
   type = string
 }
 
+variable "use_internal_ip" {
+  type = bool
+  default = false
+}
+
 source "googlecompute" "test-image" {
   project_id                  = var.project_id
   source_image_family         = "ubuntu-2204-lts"
@@ -37,6 +42,7 @@ source "googlecompute" "test-image" {
   tags                        = ["packer"]
   impersonate_service_account = var.builder_sa
   startup_script_file         = "startup-script.sh"
+  use_internal_ip             = var.use_internal_ip
 }
 
 build {
