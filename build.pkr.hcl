@@ -19,6 +19,10 @@ variable "builder_sa" {
   type = string
 }
 
+variable "image_name" {
+  type = string
+}
+
 source "googlecompute" "test-image" {
   project_id                  = var.project_id
   source_image_family         = "ubuntu-2204-lts"
