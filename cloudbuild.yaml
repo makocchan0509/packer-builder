@@ -1,0 +1,30 @@
+# Perform a Packer build based on the `build.pkr.hcl` configuration
+# and user variables from variables.pkrvars.hcl file. This Packer
+# build creates a GCE image.
+#
+# See README.md for invocation instructions.
+steps:
+- name: 'gcr.io/$PROJECT_ID/packer'
+  args:
+  - init
+  - -var-file=variables.pkrvars.hcl
+  - build.pkr.hcl
+- name: 'gcr.io/$PROJECT_ID/packer'
+  args:
+  - build
+  - -var
+  - project_id=$PROJECT_ID
+  - -var
+  - zone=asia-northeast1-b
+  - -var
+  - builder_sa=$_PACKER_SA
+  - -var
+  - image_name=$_IMAGE_NAME
+  - build.pkr.hcl
+tags: ['cloud-builders-community']
+substitutions:
+  _IMAGE_NAME: "packer-build-image"
+  _PACKER_SA: "packer-build@host-shared-mc-001.iam.gserviceaccount.com"
+options:
+  pool:
+    name: 'projects/host-shared-mc-001/locations/asia-northeast1/workerPools/private-pool'
