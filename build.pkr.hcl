@@ -28,7 +28,7 @@ source "googlecompute" "test-image" {
   disk_size                   = "10"
   network                     = "packer-network"
   subnetwork                  = "packer-tokyo"
-  image_name                  = var.iamge_name
+  image_name                  = var.image_name
   machine_type                = "e2-micro"
   tags                        = ["packer"]
   impersonate_service_account = var.builder_sa
