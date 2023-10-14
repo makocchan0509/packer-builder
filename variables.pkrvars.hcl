@@ -2,4 +2,4 @@
 project_id = "host-shared-mc-001"
 zone       = "asia-northeast1-b"
 builder_sa = "packer-build@host-shared-mc-001.iam.gserviceaccount.com"
-iamge_name = "packer-build-image"
+image_name = "packer-build-image"
