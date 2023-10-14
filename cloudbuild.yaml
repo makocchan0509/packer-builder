@@ -25,6 +25,8 @@ tags: ['cloud-builders-community']
 substitutions:
   _IMAGE_NAME: "packer-build-image"
   _PACKER_SA: "packer-build@host-shared-mc-001.iam.gserviceaccount.com"
+logsBucket: 'gs://host-shared-mc-build-log'
 options:
+  logging: GCS_ONLY
   pool:
     name: 'projects/host-shared-mc-001/locations/asia-northeast1/workerPools/private-pool'
